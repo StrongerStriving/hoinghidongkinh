@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thăm dò Tâm lý trong Điều trị Động kinh - BS. Nguyễn Trung Nghĩa</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Custom CSS for Chart Containers and Specific Layouts -->
+    <style>
+        /* CRITICAL: Chart Container Styling */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 100%; /* Flexible within grid */
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px; /* Mobile base */
+            max-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+
+        /* Custom Scrollbar for a clean look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+
+        /* Dark mode scrollbar for AI section */
+        .dark-scrollbar::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.1); 
+        }
+        .dark-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.2); 
+            border-radius: 4px;
+        }
+        .dark-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(255,255,255,0.4); 
+        }
+
+        /* Diagram Styling for "Bidirectional Relationship" */
+        .flow-box {
+            border-left: 4px solid #f97316;
+            background-color: #fff7ed;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+        .flow-box:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Typography Polish */
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+
+        /* Animations for AI Section */
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-md sticky top-0 z-50 border-b-4 border-teal-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row justify-between items-center">
+            <div>
+                <h1 class="text-2xl md:text-3xl font-bold text-indigo-800">Thăm dò Tâm lý trong Động kinh</h1>
+                <p class="text-sm text-slate-500 font-medium mt-1">Hội nghị Cập nhật U Não & Động kinh | 15:00 - BS. Nguyễn Trung Nghĩa</p>
+            </div>
+            <div class="mt-4 md:mt-0 flex items-center space-x-2">
+                <span class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-bold uppercase tracking-wider">Session 3</span>
+                <span class="px-3 py-1 bg-teal-100 text-teal-700 rounded-full text-xs font-bold uppercase tracking-wider">15 Phút</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+
+        <!-- SECTION 1: INTRODUCTION & CONTEXT -->
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            <div class="md:col-span-7">
+                <div class="bg-white p-6 rounded-xl shadow-lg border-l-8 border-indigo-700">
+                    <h2 class="text-2xl font-bold mb-4 text-indigo-900">Tại sao cần thăm dò tâm lý?</h2>
+                    <p class="text-gray-700 leading-relaxed text-lg mb-4">
+                        Chúng ta đã thảo luận về hình ảnh học (MRI) và can thiệp ngoại khoa để xử lý tổn thương thực thể. Tuy nhiên, <strong>chất lượng cuộc sống (QOL)</strong> của bệnh nhân không chỉ phụ thuộc vào tần số cơn giật.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed">
+                        Các rối loạn tâm thần là bệnh lý đi kèm phổ biến nhất nhưng thường bị bỏ sót trong điều trị động kinh. Điều này tạo ra "Khoảng trống điều trị" (Treatment Gap) ảnh hưởng trực tiếp đến hiệu quả kiểm soát cơn.
+                    </p>
+                </div>
+            </div>
+            <div class="md:col-span-5 flex flex-col items-center justify-center bg-indigo-50 rounded-xl p-6">
+                <div class="text-center mb-2">
+                    <span class="text-5xl font-extrabold text-teal-600 block mb-2">30-50%</span>
+                    <span class="text-sm font-semibold text-slate-600 uppercase tracking-wide">Bệnh nhân động kinh kháng thuốc</span>
+                </div>
+                <p class="text-center text-gray-600">Gặp phải các vấn đề về rối loạn tâm thần, đặc biệt là Trầm cảm và Lo âu.</p>
+            </div>
+        </section>
+
+        <!-- SECTION 2: PREVALENCE DATA -->
+        <section>
+            <div class="mb-6">
+                <h2 class="text-2xl font-bold text-gray-800 flex items-center">
+                    <span class="w-8 h-8 bg-teal-500 text-white rounded-full flex items-center justify-center mr-3 text-sm">01</span>
+                    Dịch tễ học: Gánh nặng thầm lặng
+                </h2>
+                <p class="text-gray-600 mt-2 max-w-3xl">
+                    Tỷ lệ mắc các bệnh tâm thần ở người bệnh động kinh cao hơn đáng kể so với dân số chung. Dữ liệu dưới đây tổng hợp từ các nghiên cứu của ILAE (Liên hội Chống Động kinh Quốc tế).
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Chart 1: Prevalence Bar Chart -->
+                <div class="bg-white p-4 rounded-xl shadow-md border border-slate-200">
+                    <h3 class="font-bold text-lg text-indigo-700 mb-4 text-center">Tỷ lệ Rối loạn Tâm thần trong Động kinh</h3>
+                    <div class="chart-container">
+                        <canvas id="prevalenceChart"></canvas>
+                    </div>
+                    <p class="text-xs text-center text-gray-400 mt-2">Nguồn: Tổng hợp ILAE & Các nghiên cứu meta-analysis</p>
+                </div>
+
+                <!-- Context Card -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200 flex flex-col justify-center">
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-10 w-10 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center font-bold text-xl">!</div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-bold text-gray-800">Trầm cảm (Depression)</h4>
+                                <p class="text-gray-600 text-sm">Là bệnh lý đi kèm thường gặp nhất. Có mối quan hệ hai chiều mạnh mẽ. Nguy cơ tự sát cao gấp 5 lần so với dân số chung.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-10 w-10 bg-teal-100 text-teal-600 rounded-full flex items-center justify-center font-bold text-xl">?</div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-bold text-gray-800">Lo âu (Anxiety)</h4>
+                                <p class="text-gray-600 text-sm">Thường bị nhầm lẫn với cơn động kinh cục bộ hoặc biểu hiện sợ hãi quanh cơn (peri-ictal).</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-10 w-10 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center font-bold text-xl">#</div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-bold text-gray-800">Loạn thần (Psychosis)</h4>
+                                <p class="text-gray-600 text-sm">Có thể xuất hiện sau cơn (post-ictal psychosis) hoặc mạn tính (chronic interictal psychosis), đặc biệt ở động kinh thùy thái dương.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: MECHANISM (NO SVG DIAGRAM) -->
+        <section class="bg-indigo-50 p-8 rounded-2xl">
+            <div class="mb-8 text-center">
+                <h2 class="text-2xl font-bold text-indigo-900">Cơ chế bệnh sinh: Mối quan hệ hai chiều</h2>
+                <p class="text-indigo-700 mt-2">Động kinh và Trầm cảm/Lo âu chia sẻ chung các cơ chế sinh học thần kinh.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center max-w-5xl mx-auto">
+                <!-- Column 1: Epilepsy -->
+                <div class="flow-box text-center h-full flex flex-col justify-center">
+                    <div class="text-4xl mb-2">🧠</div>
+                    <h3 class="font-bold text-lg text-gray-800">Bệnh Động Kinh</h3>
+                    <ul class="text-sm text-gray-600 mt-2 space-y-1 text-left px-4 list-disc">
+                        <li>Tổn thương thùy thái dương/trán</li>
+                        <li>Mất cân bằng dẫn truyền thần kinh</li>
+                        <li>Tác dụng phụ thuốc kháng động kinh (AEDs)</li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: The Bridge (Arrows) -->
+                <div class="flex flex-col items-center justify-center py-4 md:py-0">
+                    <div class="bg-white p-3 rounded shadow-sm w-full text-center border border-slate-200">
+                        <p class="text-xs font-bold text-teal-600 uppercase">Cơ chế chung</p>
+                        <p class="text-xs text-gray-500">Giảm Serotonin & Noradrenaline</p>
+                        <p class="text-xs text-gray-500">Trục HPA hoạt động quá mức</p>
+                        <p class="text-xs text-gray-500">Viêm thần kinh</p>
+                    </div>
+                    <!-- CSS Arrows simulating bidirectional flow -->
+                    <div class="flex md:flex-col w-full justify-between px-8 md:px-0 mt-2">
+                        <div class="text-orange-500 text-3xl font-bold text-center transform md:rotate-90">↔</div>
+                    </div>
+                </div>
+
+                <!-- Column 3: Mental Health -->
+                <div class="flow-box text-center h-full flex flex-col justify-center border-l-orange-500" style="border-left-color: #14b8a6;">
+                    <div class="text-4xl mb-2">💔</div>
+                    <h3 class="font-bold text-lg text-gray-800">Rối loạn Tâm thần</h3>
+                    <ul class="text-sm text-gray-600 mt-2 space-y-1 text-left px-4 list-disc">
+                        <li>Làm giảm ngưỡng co giật</li>
+                        <li>Giảm tuân thủ điều trị</li>
+                        <li>Tăng tần suất cơn</li>
+                        <li>Giảm chất lượng giấc ngủ</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <p class="text-center text-sm text-indigo-800 mt-6 italic font-medium">
+                "Điều trị rối loạn tâm thần không làm tăng nguy cơ co giật, ngược lại giúp kiểm soát cơn tốt hơn."
+            </p>
+        </section>
+
+        <!-- SECTION 4: SCREENING TOOLS -->
+        <section>
+            <div class="mb-6">
+                <h2 class="text-2xl font-bold text-gray-800 flex items-center">
+                    <span class="w-8 h-8 bg-teal-500 text-white rounded-full flex items-center justify-center mr-3 text-sm">02</span>
+                    Công cụ Tầm soát Khuyến cáo
+                </h2>
+                <p class="text-gray-600 mt-2">
+                    ILAE khuyến cáo tầm soát định kỳ cho mọi bệnh nhân động kinh. Hai công cụ "Vàng" dễ sử dụng nhất trên lâm sàng là NDDI-E và GAD-7.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Tool 1: NDDI-E -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="bg-indigo-600 p-4 text-white flex justify-between items-center">
+                        <h3 class="font-bold text-lg">NDDI-E (Trầm cảm)</h3>
+                        <span class="text-xs bg-indigo-500 px-2 py-1 rounded">Chuyên biệt cho Động kinh</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between mb-4 border-b pb-4 border-slate-100">
+                            <div class="text-center">
+                                <span class="block text-2xl font-bold text-gray-800">6</span>
+                                <span class="text-xs text-gray-500">Số câu hỏi</span>
+                            </div>
+                            <div class="text-center">
+                                <span class="block text-2xl font-bold text-orange-500">> 15</span>
+                                <span class="text-xs text-gray-500">Điểm cắt (Cut-off)</span>
+                            </div>
+                            <div class="text-center">
+                                <span class="block text-2xl font-bold text-teal-600">3 phút</span>
+                                <span class="text-xs text-gray-500">Thời gian</span>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-4">
+                            Neurological Disorders Depression Inventory for Epilepsy. Được thiết kế để loại bỏ các triệu chứng gây nhiễu do tác dụng phụ của thuốc (như mệt mỏi, buồn ngủ).
+                        </p>
+                        <!-- Comparison Chart -->
+                        <div class="chart-container" style="height: 200px;">
+                            <canvas id="nddieChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tool 2: GAD-7 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="bg-teal-600 p-4 text-white flex justify-between items-center">
+                        <h3 class="font-bold text-lg">GAD-7 (Lo âu)</h3>
+                        <span class="text-xs bg-teal-500 px-2 py-1 rounded">Phổ biến toàn cầu</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between mb-4 border-b pb-4 border-slate-100">
+                            <div class="text-center">
+                                <span class="block text-2xl font-bold text-gray-800">7</span>
+                                <span class="text-xs text-gray-500">Số câu hỏi</span>
+                            </div>
+                            <div class="text-center">
+                                <span class="block text-2xl font-bold text-orange-500">> 10</span>
+                                <span class="text-xs text-gray-500">Điểm cắt (Vừa)</span>
+                            </div>
+                            <div class="text-center">
+                                <span class="block text-2xl font-bold text-teal-600">5 phút</span>
+                                <span class="text-xs text-gray-500">Thời gian</span>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-4">
+                            Generalized Anxiety Disorder-7. Đánh giá mức độ lo âu lan tỏa. Rất hữu ích để theo dõi đáp ứng điều trị theo thời gian.
+                        </p>
+                        <!-- Scoring Visualization -->
+                        <div class="mt-4">
+                            <div class="w-full bg-gray-200 rounded-full h-4 mb-2">
+                                <div class="bg-green-400 h-4 rounded-l-full inline-block" style="width: 25%"></div><div class="bg-yellow-400 h-4 inline-block" style="width: 25%"></div><div class="bg-orange-400 h-4 inline-block" style="width: 25%"></div><div class="bg-red-500 h-4 rounded-r-full inline-block" style="width: 25%"></div>
+                            </div>
+                            <div class="flex justify-between text-xs text-gray-500 font-medium">
+                                <span>0-4: Không</span>
+                                <span>5-9: Nhẹ</span>
+                                <span>10-14: Vừa</span>
+                                <span>15-21: Nặng</span>
+                            </div>
+                        </div>
+                        <div class="mt-6 p-3 bg-slate-50 border border-slate-200 rounded text-xs text-gray-600">
+                            <strong>Lưu ý lâm sàng:</strong> Cần phân biệt lo âu lan tỏa với lo âu sợ cơn (fear of seizure) hoặc lo âu trong cơn (aura).
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: CLINICAL CHARACTERISTICS -->
+        <section>
+             <div class="mb-6">
+                <h2 class="text-2xl font-bold text-gray-800 flex items-center">
+                    <span class="w-8 h-8 bg-teal-500 text-white rounded-full flex items-center justify-center mr-3 text-sm">03</span>
+                    Đặc điểm Tâm lý & Tính cách
+                </h2>
+                <p class="text-gray-600 mt-2">
+                    Hội chứng Gastaut-Geschwind (trước đây) hay những thay đổi tính cách hiện đại được ghi nhận ở bệnh nhân động kinh thùy thái dương (TLE).
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                 <!-- Feature 1 -->
+                 <div class="bg-white p-6 rounded-lg shadow border-t-4 border-orange-400">
+                    <h4 class="font-bold text-gray-800 text-lg mb-2">Nhớt dính (Viscosity)</h4>
+                    <p class="text-sm text-gray-600">Bệnh nhân nói nhiều, lặp đi lặp lại một chủ đề, khó kết thúc câu chuyện, chi tiết quá mức cần thiết. Tư duy luẩn quẩn.</p>
+                 </div>
+                 <!-- Feature 2 -->
+                 <div class="bg-white p-6 rounded-lg shadow border-t-4 border-teal-400">
+                    <h4 class="font-bold text-gray-800 text-lg mb-2">Cảm xúc không ổn định</h4>
+                    <p class="text-sm text-gray-600">Dễ cáu gắt (Irritability) từng đợt, cảm xúc bùng nổ không tương xứng với hoàn cảnh. Xen kẽ các giai đoạn trầm cảm.</p>
+                 </div>
+                 <!-- Feature 3 -->
+                 <div class="bg-white p-6 rounded-lg shadow border-t-4 border-indigo-400">
+                    <h4 class="font-bold text-gray-800 text-lg mb-2">Tôn giáo & Triết lý</h4>
+                    <p class="text-sm text-gray-600">Hypergraphia (viết rất nhiều), quan tâm quá mức đến các vấn đề tôn giáo, triết học hoặc đạo đức (đặc trưng của TLE).</p>
+                 </div>
+            </div>
+
+            <!-- Chart Characteristics -->
+            <div class="mt-8 bg-white p-6 rounded-xl shadow-lg">
+                <h3 class="font-bold text-center text-gray-800 mb-4">Hồ sơ Tâm lý Xã hội (Minh họa)</h3>
+                <div class="chart-container">
+                    <canvas id="psychProfileChart"></canvas>
+                </div>
+                <p class="text-center text-sm text-gray-500 mt-4">So sánh các khía cạnh tâm lý xã hội giữa nhóm chứng và nhóm động kinh kháng thuốc.</p>
+            </div>
+        </section>
+
+        <!-- SECTION 6: GEMINI AI TOOLS -->
+        <section class="bg-gradient-to-br from-indigo-900 to-indigo-700 p-8 rounded-2xl text-white shadow-xl relative overflow-hidden mt-12">
+            <!-- Sparkle decorations -->
+            <div class="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+            <div class="absolute bottom-0 left-0 -ml-16 -mb-16 w-64 h-64 bg-orange-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+            
+            <div class="relative z-10">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold flex items-center justify-center gap-2">
+                        <span>✨</span> Trợ lý AI Hỗ trợ Lâm sàng <span>✨</span>
+                    </h2>
+                    <p class="text-indigo-200 mt-2">Sử dụng sức mạnh của Google Gemini để hỗ trợ chẩn đoán và giao tiếp hiệu quả.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Feature 1: Behavior Analyzer -->
+                    <div class="bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20 flex flex-col">
+                        <h3 class="text-xl font-bold text-teal-300 mb-4 flex items-center gap-2">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                            Phân tích Triệu chứng Hành vi
+                        </h3>
+                        <p class="text-sm text-indigo-100 mb-4">Nhập ghi chú quan sát hành vi của bệnh nhân để AI gợi ý các vấn đề tâm lý tiềm ẩn (Gastaut-Geschwind, Lo âu, Trầm cảm...).</p>
+                        <textarea id="symptomInput" rows="4" class="w-full p-3 rounded-lg text-gray-900 text-sm focus:ring-2 focus:ring-teal-400 outline-none mb-4" placeholder="Ví dụ: Bệnh nhân nói rất nhiều về tôn giáo, hay cáu gắt vô cớ, viết nhật ký dài dòng..."></textarea>
+                        <button onclick="analyzeSymptoms()" id="analyzeBtn" class="mt-auto w-full bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded-lg transition-all flex items-center justify-center gap-2">
+                            <span>✨</span> Phân tích ngay
+                        </button>
+                        <div id="analysisResult" class="mt-4 hidden p-4 bg-black/20 rounded-lg text-sm text-indigo-50 border border-white/10 dark-scrollbar overflow-y-auto max-h-48"></div>
+                    </div>
+
+                    <!-- Feature 2: Script Generator -->
+                    <div class="bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20 flex flex-col">
+                        <h3 class="text-xl font-bold text-orange-300 mb-4 flex items-center gap-2">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+                            Gợi ý Kịch bản Tư vấn
+                        </h3>
+                        <p class="text-sm text-indigo-100 mb-4">Tạo kịch bản giao tiếp mẫu mực, thấu cảm để thảo luận các vấn đề nhạy cảm với bệnh nhân.</p>
+                        <select id="topicSelect" class="w-full p-3 rounded-lg text-gray-900 text-sm mb-4 focus:ring-2 focus:ring-orange-400 outline-none">
+                            <option value="Suicide Screening">Tầm soát ý định tự sát (Suicide Risk)</option>
+                            <option value="Depression Discussion">Thông báo chẩn đoán Trầm cảm</option>
+                            <option value="Medication Adherence">Thảo luận về tuân thủ thuốc & Tâm lý</option>
+                            <option value="Family Support">Tư vấn cho người nhà bệnh nhân</option>
+                        </select>
+                        <button onclick="generateScript()" id="scriptBtn" class="mt-auto w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-lg transition-all flex items-center justify-center gap-2">
+                            <span>✨</span> Tạo kịch bản
+                        </button>
+                        <div id="scriptResult" class="mt-4 hidden p-4 bg-black/20 rounded-lg text-sm text-indigo-50 border border-white/10 dark-scrollbar max-h-48 overflow-y-auto"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONCLUSION -->
+        <footer class="bg-indigo-900 text-white rounded-2xl p-8 text-center mt-12 mb-8">
+            <h2 class="text-2xl font-bold mb-4">Kết Luận</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto text-left">
+                <div>
+                    <h4 class="font-bold text-teal-400 mb-2">1. Tầm soát thường quy</h4>
+                    <p class="text-indigo-200 text-sm">Sử dụng NDDI-E và GAD-7 tại phòng khám ngoại trú ít nhất 1 lần/năm.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-teal-400 mb-2">2. Điều trị đa mô thức</h4>
+                    <p class="text-indigo-200 text-sm">Phối hợp Nội thần kinh - Tâm lý - Tâm thần. Đừng ngại sử dụng SSRI khi cần thiết.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-teal-400 mb-2">3. Mục tiêu tối thượng</h4>
+                    <p class="text-indigo-200 text-sm">Không chỉ là "Hết cơn giật" mà là "Chất lượng cuộc sống" trọn vẹn.</p>
+                </div>
+            </div>
+            <div class="mt-8 pt-6 border-t border-indigo-800">
+                <p class="text-sm text-indigo-400">Slide trình bày bởi BS. Nguyễn Trung Nghĩa - 15:00, Phiên 3.</p>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- CHART CONFIGURATION & GEMINI LOGIC SCRIPT -->
+    <script>
+        const apiKey = ""; // Runtime provided by environment
+
+        // --- GEMINI API FUNCTIONS ---
+        async function callGemini(prompt) {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+            const payload = {
+                contents: [{ parts: [{ text: prompt }] }]
+            };
+
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                if (!response.ok) throw new Error('API Error');
+                
+                const data = await response.json();
+                return data.candidates[0].content.parts[0].text;
+            } catch (error) {
+                console.error(error);
+                return "Xin lỗi, hệ thống AI đang bận hoặc gặp lỗi kết nối. Vui lòng thử lại sau.";
+            }
+        }
+
+        async function analyzeSymptoms() {
+            const input = document.getElementById('symptomInput').value;
+            if (!input) return alert("Vui lòng nhập mô tả triệu chứng.");
+            
+            const btn = document.getElementById('analyzeBtn');
+            const resultDiv = document.getElementById('analysisResult');
+            
+            // UI Loading
+            btn.disabled = true;
+            btn.innerHTML = `<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Đang phân tích...`;
+            resultDiv.classList.add('hidden');
+
+            const prompt = `Bạn là một trợ lý chuyên gia thần kinh học và tâm thần học. Hãy phân tích mô tả hành vi sau của một bệnh nhân động kinh và chỉ ra các dấu hiệu cảnh báo (red flags) về các vấn đề tâm thần đi kèm (như trầm cảm, lo âu, loạn thần, hoặc biến đổi nhân cách kiểu Gastaut-Geschwind). Hãy trả lời ngắn gọn, súc tích bằng tiếng Việt, dùng gạch đầu dòng cho các điểm chính.
+            
+            Mô tả hành vi: "${input}"`;
+
+            const response = await callGemini(prompt);
+
+            // UI Result
+            resultDiv.innerHTML = `<strong>Kết quả phân tích AI:</strong><br><br>${response.replace(/\n/g, '<br>')}`;
+            resultDiv.classList.remove('hidden');
+            btn.disabled = false;
+            btn.innerHTML = `<span>✨</span> Phân tích ngay`;
+        }
+
+        async function generateScript() {
+            const topic = document.getElementById('topicSelect').value;
+            const btn = document.getElementById('scriptBtn');
+            const resultDiv = document.getElementById('scriptResult');
+            
+            // UI Loading
+            btn.disabled = true;
+            btn.innerHTML = `<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Đang soạn thảo...`;
+            resultDiv.classList.add('hidden');
+
+            const prompt = `Hãy soạn một kịch bản giao tiếp mẫu (lời thoại của bác sĩ) để nói chuyện với bệnh nhân động kinh về chủ đề: "${topic}". 
+            Yêu cầu: Giọng văn thấu cảm, chuyên nghiệp, khéo léo, tránh gây hoang mang nhưng vẫn đi thẳng vào vấn đề sàng lọc sức khỏe tâm thần. Ngôn ngữ: Tiếng Việt.`;
+
+            const response = await callGemini(prompt);
+
+            // UI Result
+            resultDiv.innerHTML = `<strong>Gợi ý kịch bản:</strong><br><br>${response.replace(/\n/g, '<br>')}`;
+            resultDiv.classList.remove('hidden');
+            btn.disabled = false;
+            btn.innerHTML = `<span>✨</span> Tạo kịch bản`;
+        }
+
+
+        // --- CHART UTILITIES & CONFIG ---
+        // Utility for label wrapping (Constraint Requirement)
+        function wrapLabel(str, maxChars) {
+            if (str.length <= maxChars) return str;
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                if (currentLine.length + 1 + words[i].length <= maxChars) {
+                    currentLine += ' ' + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        // Shared Tooltip Configuration (Constraint Requirement)
+        const commonTooltipOptions = {
+            callbacks: {
+                title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) {
+                        return label.join(' ');
+                    } else {
+                        return label;
+                    }
+                }
+            }
+        };
+
+        // 1. Prevalence Chart (Horizontal Bar)
+        const ctxPrevalence = document.getElementById('prevalenceChart').getContext('2d');
+        new Chart(ctxPrevalence, {
+            type: 'bar',
+            data: {
+                labels: [
+                    wrapLabel('Trầm cảm (Depression)', 16),
+                    wrapLabel('Rối loạn lo âu (Anxiety)', 16),
+                    wrapLabel('Loạn thần (Psychosis)', 16),
+                    wrapLabel('ADHD (Trẻ em)', 16),
+                    wrapLabel('Tự sát (Suicidality)', 16)
+                ],
+                datasets: [{
+                    label: 'Tỷ lệ mắc (%)',
+                    data: [35, 25, 7, 30, 12],
+                    backgroundColor: [
+                        'rgba(249, 115, 22, 0.8)', // Orange for high alert
+                        'rgba(20, 184, 166, 0.8)', // Teal
+                        'rgba(67, 56, 202, 0.8)', // Indigo
+                        'rgba(99, 102, 241, 0.6)',
+                        'rgba(239, 68, 68, 0.8)'   // Red for suicide
+                    ],
+                    borderColor: 'rgba(255,255,255,1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y', // Horizontal bar
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: commonTooltipOptions,
+                    title: {
+                        display: true,
+                        text: 'Tỷ lệ mắc các bệnh đồng mắc ở người Động kinh',
+                        font: { size: 14 }
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 50,
+                        grid: { color: '#f1f5f9' }
+                    },
+                    y: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+
+        // 2. NDDI-E Sensitivity Chart
+        const ctxNddie = document.getElementById('nddieChart').getContext('2d');
+        new Chart(ctxNddie, {
+            type: 'bar',
+            data: {
+                labels: ['Độ nhạy (Sensitivity)', 'Độ đặc hiệu (Specificity)'],
+                datasets: [{
+                    label: 'NDDI-E (Cut-off > 15)',
+                    data: [81, 90],
+                    backgroundColor: '#4338ca',
+                    barPercentage: 0.5
+                }, {
+                    label: 'GAD-7 (Cut-off > 10)',
+                    data: [89, 82],
+                    backgroundColor: '#14b8a6',
+                    barPercentage: 0.5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: commonTooltipOptions,
+                    legend: { position: 'bottom' }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: { display: true, text: 'Phần trăm (%)' }
+                    }
+                }
+            }
+        });
+
+        // 3. Psychological Profile Radar Chart
+        const ctxPsych = document.getElementById('psychProfileChart').getContext('2d');
+        new Chart(ctxPsych, {
+            type: 'radar',
+            data: {
+                labels: [
+                    wrapLabel('Chất lượng cuộc sống', 16),
+                    wrapLabel('Lo âu xã hội', 16),
+                    wrapLabel('Trí nhớ & Chú ý', 16),
+                    wrapLabel('Kích động/Cáu gắt', 16),
+                    wrapLabel('Chất lượng giấc ngủ', 16)
+                ],
+                datasets: [{
+                    label: 'Người bệnh Động kinh',
+                    data: [45, 70, 50, 65, 40],
+                    fill: true,
+                    backgroundColor: 'rgba(249, 115, 22, 0.2)',
+                    borderColor: 'rgb(249, 115, 22)',
+                    pointBackgroundColor: 'rgb(249, 115, 22)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(249, 115, 22)'
+                }, {
+                    label: 'Nhóm chứng (Khỏe mạnh)',
+                    data: [80, 20, 85, 20, 80],
+                    fill: true,
+                    backgroundColor: 'rgba(20, 184, 166, 0.2)',
+                    borderColor: 'rgb(20, 184, 166)',
+                    pointBackgroundColor: 'rgb(20, 184, 166)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(20, 184, 166)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                elements: {
+                    line: { borderWidth: 3 }
+                },
+                plugins: {
+                    tooltip: commonTooltipOptions,
+                    legend: { position: 'top' }
+                },
+                scales: {
+                    r: {
+                        angleLines: { display: true },
+                        suggestedMin: 0,
+                        suggestedMax: 100,
+                        ticks: { display: false } // Hide numbers for cleaner look
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
