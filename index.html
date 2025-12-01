@@ -8,7 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
+    <!-- Chart.js Datalabels Plugin (Optional but good for infographics, standard chart.js used here) -->
+
     <!-- Custom CSS for Chart Containers and Specific Layouts -->
     <style>
         /* CRITICAL: Chart Container Styling */
@@ -43,19 +44,7 @@
             background: #94a3b8; 
         }
 
-        /* Dark mode scrollbar for AI section */
-        .dark-scrollbar::-webkit-scrollbar-track {
-            background: rgba(0,0,0,0.1); 
-        }
-        .dark-scrollbar::-webkit-scrollbar-thumb {
-            background: rgba(255,255,255,0.2); 
-            border-radius: 4px;
-        }
-        .dark-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: rgba(255,255,255,0.4); 
-        }
-
-        /* Diagram Styling for "Bidirectional Relationship" */
+        /* Diagram Styling for "Bidirectional Relationship" - NO SVG/Mermaid */
         .flow-box {
             border-left: 4px solid #f97316;
             background-color: #fff7ed;
@@ -67,6 +56,22 @@
         .flow-box:hover {
             transform: translateY(-2px);
         }
+        .arrow-down {
+            width: 0; 
+            height: 0; 
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 15px solid #94a3b8;
+            margin: 0.5rem auto;
+        }
+        .arrow-up {
+            width: 0; 
+            height: 0; 
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 15px solid #94a3b8;
+            margin: 0.5rem auto;
+        }
         
         /* Typography Polish */
         body {
@@ -74,21 +79,32 @@
             background-color: #f8fafc;
             color: #1e293b;
         }
-
-        /* Animations for AI Section */
-        @keyframes blob {
-            0% { transform: translate(0px, 0px) scale(1); }
-            33% { transform: translate(30px, -50px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-            100% { transform: translate(0px, 0px) scale(1); }
-        }
-        .animate-blob {
-            animation: blob 7s infinite;
-        }
-        .animation-delay-2000 {
-            animation-delay: 2s;
+        .text-gradient {
+            background: linear-gradient(to right, #4338ca, #14b8a6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
     </style>
+    <!-- 
+        Palette Used: 
+        Primary: #4338ca (Indigo 700)
+        Secondary: #14b8a6 (Teal 500)
+        Accent: #f97316 (Orange 500)
+        Background: #f8fafc (Slate 50)
+    -->
+    <!-- 
+        NO SVG USED.
+        NO MERMAID JS USED. 
+    -->
+    <!--
+        Narrative Plan:
+        1. Context/Hook: The "Invisible" Burden.
+        2. Data: Prevalence of Comorbidities.
+        3. Mechanism: Bidirectional Relationship.
+        4. Screening: The Tools (NDDI-E, GAD-7).
+        5. Characteristics: Psychological Profile.
+        6. Summary/Conclusion.
+    -->
 </head>
 <body class="antialiased">
 
@@ -360,57 +376,6 @@
             </div>
         </section>
 
-        <!-- SECTION 6: GEMINI AI TOOLS -->
-        <section class="bg-gradient-to-br from-indigo-900 to-indigo-700 p-8 rounded-2xl text-white shadow-xl relative overflow-hidden mt-12">
-            <!-- Sparkle decorations -->
-            <div class="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-            <div class="absolute bottom-0 left-0 -ml-16 -mb-16 w-64 h-64 bg-orange-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-            
-            <div class="relative z-10">
-                <div class="text-center mb-8">
-                    <h2 class="text-3xl font-bold flex items-center justify-center gap-2">
-                        <span>✨</span> Trợ lý AI Hỗ trợ Lâm sàng <span>✨</span>
-                    </h2>
-                    <p class="text-indigo-200 mt-2">Sử dụng sức mạnh của Google Gemini để hỗ trợ chẩn đoán và giao tiếp hiệu quả.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Feature 1: Behavior Analyzer -->
-                    <div class="bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20 flex flex-col">
-                        <h3 class="text-xl font-bold text-teal-300 mb-4 flex items-center gap-2">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
-                            Phân tích Triệu chứng Hành vi
-                        </h3>
-                        <p class="text-sm text-indigo-100 mb-4">Nhập ghi chú quan sát hành vi của bệnh nhân để AI gợi ý các vấn đề tâm lý tiềm ẩn (Gastaut-Geschwind, Lo âu, Trầm cảm...).</p>
-                        <textarea id="symptomInput" rows="4" class="w-full p-3 rounded-lg text-gray-900 text-sm focus:ring-2 focus:ring-teal-400 outline-none mb-4" placeholder="Ví dụ: Bệnh nhân nói rất nhiều về tôn giáo, hay cáu gắt vô cớ, viết nhật ký dài dòng..."></textarea>
-                        <button onclick="analyzeSymptoms()" id="analyzeBtn" class="mt-auto w-full bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded-lg transition-all flex items-center justify-center gap-2">
-                            <span>✨</span> Phân tích ngay
-                        </button>
-                        <div id="analysisResult" class="mt-4 hidden p-4 bg-black/20 rounded-lg text-sm text-indigo-50 border border-white/10 dark-scrollbar overflow-y-auto max-h-48"></div>
-                    </div>
-
-                    <!-- Feature 2: Script Generator -->
-                    <div class="bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20 flex flex-col">
-                        <h3 class="text-xl font-bold text-orange-300 mb-4 flex items-center gap-2">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
-                            Gợi ý Kịch bản Tư vấn
-                        </h3>
-                        <p class="text-sm text-indigo-100 mb-4">Tạo kịch bản giao tiếp mẫu mực, thấu cảm để thảo luận các vấn đề nhạy cảm với bệnh nhân.</p>
-                        <select id="topicSelect" class="w-full p-3 rounded-lg text-gray-900 text-sm mb-4 focus:ring-2 focus:ring-orange-400 outline-none">
-                            <option value="Suicide Screening">Tầm soát ý định tự sát (Suicide Risk)</option>
-                            <option value="Depression Discussion">Thông báo chẩn đoán Trầm cảm</option>
-                            <option value="Medication Adherence">Thảo luận về tuân thủ thuốc & Tâm lý</option>
-                            <option value="Family Support">Tư vấn cho người nhà bệnh nhân</option>
-                        </select>
-                        <button onclick="generateScript()" id="scriptBtn" class="mt-auto w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-lg transition-all flex items-center justify-center gap-2">
-                            <span>✨</span> Tạo kịch bản
-                        </button>
-                        <div id="scriptResult" class="mt-4 hidden p-4 bg-black/20 rounded-lg text-sm text-indigo-50 border border-white/10 dark-scrollbar max-h-48 overflow-y-auto"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- CONCLUSION -->
         <footer class="bg-indigo-900 text-white rounded-2xl p-8 text-center mt-12 mb-8">
             <h2 class="text-2xl font-bold mb-4">Kết Luận</h2>
@@ -435,83 +400,8 @@
 
     </main>
 
-    <!-- CHART CONFIGURATION & GEMINI LOGIC SCRIPT -->
+    <!-- CHART CONFIGURATION SCRIPT -->
     <script>
-        const apiKey = ""; // Runtime provided by environment
-
-        // --- GEMINI API FUNCTIONS ---
-        async function callGemini(prompt) {
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-            const payload = {
-                contents: [{ parts: [{ text: prompt }] }]
-            };
-
-            try {
-                const response = await fetch(url, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                
-                if (!response.ok) throw new Error('API Error');
-                
-                const data = await response.json();
-                return data.candidates[0].content.parts[0].text;
-            } catch (error) {
-                console.error(error);
-                return "Xin lỗi, hệ thống AI đang bận hoặc gặp lỗi kết nối. Vui lòng thử lại sau.";
-            }
-        }
-
-        async function analyzeSymptoms() {
-            const input = document.getElementById('symptomInput').value;
-            if (!input) return alert("Vui lòng nhập mô tả triệu chứng.");
-            
-            const btn = document.getElementById('analyzeBtn');
-            const resultDiv = document.getElementById('analysisResult');
-            
-            // UI Loading
-            btn.disabled = true;
-            btn.innerHTML = `<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Đang phân tích...`;
-            resultDiv.classList.add('hidden');
-
-            const prompt = `Bạn là một trợ lý chuyên gia thần kinh học và tâm thần học. Hãy phân tích mô tả hành vi sau của một bệnh nhân động kinh và chỉ ra các dấu hiệu cảnh báo (red flags) về các vấn đề tâm thần đi kèm (như trầm cảm, lo âu, loạn thần, hoặc biến đổi nhân cách kiểu Gastaut-Geschwind). Hãy trả lời ngắn gọn, súc tích bằng tiếng Việt, dùng gạch đầu dòng cho các điểm chính.
-            
-            Mô tả hành vi: "${input}"`;
-
-            const response = await callGemini(prompt);
-
-            // UI Result
-            resultDiv.innerHTML = `<strong>Kết quả phân tích AI:</strong><br><br>${response.replace(/\n/g, '<br>')}`;
-            resultDiv.classList.remove('hidden');
-            btn.disabled = false;
-            btn.innerHTML = `<span>✨</span> Phân tích ngay`;
-        }
-
-        async function generateScript() {
-            const topic = document.getElementById('topicSelect').value;
-            const btn = document.getElementById('scriptBtn');
-            const resultDiv = document.getElementById('scriptResult');
-            
-            // UI Loading
-            btn.disabled = true;
-            btn.innerHTML = `<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Đang soạn thảo...`;
-            resultDiv.classList.add('hidden');
-
-            const prompt = `Hãy soạn một kịch bản giao tiếp mẫu (lời thoại của bác sĩ) để nói chuyện với bệnh nhân động kinh về chủ đề: "${topic}". 
-            Yêu cầu: Giọng văn thấu cảm, chuyên nghiệp, khéo léo, tránh gây hoang mang nhưng vẫn đi thẳng vào vấn đề sàng lọc sức khỏe tâm thần. Ngôn ngữ: Tiếng Việt.`;
-
-            const response = await callGemini(prompt);
-
-            // UI Result
-            resultDiv.innerHTML = `<strong>Gợi ý kịch bản:</strong><br><br>${response.replace(/\n/g, '<br>')}`;
-            resultDiv.classList.remove('hidden');
-            btn.disabled = false;
-            btn.innerHTML = `<span>✨</span> Tạo kịch bản`;
-        }
-
-
-        // --- CHART UTILITIES & CONFIG ---
         // Utility for label wrapping (Constraint Requirement)
         function wrapLabel(str, maxChars) {
             if (str.length <= maxChars) return str;
